@@ -2,7 +2,7 @@
 view: reach_aggregate_bydate_yearago {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_yearago`
+  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_yearago_v2`
     ;;
   dimension_group: date {
     type: time

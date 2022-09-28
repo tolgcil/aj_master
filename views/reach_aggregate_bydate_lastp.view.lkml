@@ -1,5 +1,5 @@
 view: reach_aggregate_bydate_lastp {
-  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp`
+  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp_v2`
     ;;
 
   dimension_group: date {
