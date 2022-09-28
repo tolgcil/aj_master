@@ -2,7 +2,7 @@
 view: youtube_country {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `al_jazeera_data_models_poc.youtube_country`
+  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.youtube_country`
     ;;
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -15,6 +15,11 @@ view: youtube_country {
     type: string
     map_layer_name: countries
     sql: ${TABLE}.country ;;
+  }
+
+  dimension: country_code {
+    type: string
+    sql: ${TABLE}.country_code ;;
   }
 
   dimension: views {

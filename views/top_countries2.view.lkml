@@ -2,7 +2,7 @@
 view: top_countries2 {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `al_jazeera_data_models_poc.top_countries2`
+  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.top_countries2`
     ;;
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -36,8 +36,8 @@ view: top_countries2 {
     sql: ${percent_total} ;;
   }
 
-  dimension: total_views {
-    type: number
+  measure: total_views {
+    type: sum
     sql: ${TABLE}.total_views ;;
   }
 

@@ -2,7 +2,7 @@
 view: reach_aggregate_bydate_lastyear {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `al_jazeera_data_models_poc.reach_aggregate_bydate_lastyear`
+  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastyear`
     ;;
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -29,8 +29,8 @@ view: reach_aggregate_bydate_lastyear {
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Fb Views" in Explore.
 
-  dimension: fb_views {
-    type: number
+  measure: fb_views {
+    type: sum
     sql: ${TABLE}.fb_views ;;
   }
 
@@ -40,26 +40,26 @@ view: reach_aggregate_bydate_lastyear {
 
   measure: total_fb_views {
     type: sum
-    sql: ${fb_views} ;;
+    sql: ${TABLE}.fb_views ;;
   }
 
   measure: average_fb_views {
     type: average
-    sql: ${fb_views} ;;
+    sql: ${TABLE}.fb_views ;;
   }
 
-  dimension: pageviews {
-    type: number
+  measure: pageviews {
+    type: sum
     sql: ${TABLE}.pageviews ;;
   }
 
-  dimension: total_views {
-    type: number
+  measure: total_views {
+    type: sum
     sql: ${TABLE}.total_views ;;
   }
 
-  dimension: yt_views {
-    type: number
+  measure: yt_views {
+    type: sum
     sql: ${TABLE}.yt_views ;;
   }
 
