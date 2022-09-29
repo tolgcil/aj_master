@@ -10,8 +10,8 @@ view: for_last_years {
       b.fb_views as last_fb_views,
       b.pageviews as last_pageviews,
       b.total_views as last_total_views
-      FROM `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastyear_v2` AS A
-      JOIN `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastyear_v2` AS B
+      FROM `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastyear_v2` AS a
+      JOIN `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastyear_v2` AS b
       ON
       EXTRACT (YEAR FROM A.date ) = EXTRACT (YEAR FROM B.date )+1 AND
          EXTRACT (MONTH FROM A.date ) = EXTRACT (MONTH FROM B.date ) AND
