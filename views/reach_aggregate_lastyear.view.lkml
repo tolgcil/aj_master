@@ -2,7 +2,7 @@
 view: reach_aggregate_lastyear {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_lastyear`
+  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_lastyear_v2`
     ;;
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -39,20 +39,6 @@ view: reach_aggregate_lastyear {
     sql: ${TABLE}.fb_views ;;
   }
 
-  # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
-  # measures for this dimension, but you can also add measures of many different aggregates.
-  # Click on the type parameter to see all the options in the Quick Help panel on the right.
-
-  measure: total_fb_views {
-    type: sum
-    sql: ${fb_views} ;;
-  }
-
-  measure: average_fb_views {
-    type: average
-    sql: ${fb_views} ;;
-  }
-
   dimension: pageviews {
     type: number
     sql: ${TABLE}.pageviews ;;
@@ -71,5 +57,44 @@ view: reach_aggregate_lastyear {
   measure: count {
     type: count
     drill_fields: []
+  }
+  measure: total_fb_views {
+    type: sum
+    sql: ${fb_views} ;;
+  }
+
+  measure: total_views_ {
+    type: sum
+    sql: ${total_views} ;;
+  }
+
+  measure: total_pageviews  {
+    type: sum
+    sql: ${pageviews} ;;
+  }
+
+  measure: total_yt_views {
+    type: sum
+    sql: ${yt_views} ;;
+  }
+
+  measure: fb_percent {
+    type: number
+    sql: ${total_fb_views}/${total_views_} ;;
+  }
+
+  measure: yt_percent {
+    type: number
+    sql:  ${total_yt_views}/${total_views_};;
+  }
+
+  measure: pv_percent {
+    type: number
+    sql:  ${total_pageviews}/${total_views_} ;;
+  }
+
+  measure: total_reach {
+    type: percent_of_total
+    sql: ${total_views_} ;;
   }
 }

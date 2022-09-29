@@ -17,6 +17,24 @@ persist_with: ajmn_poc_dashboards_default_datagroup
 explore: youtube_device {
 }
 
+#explore: ahmet {
+#  fields: [ALL_FIELDS*]
+#  from: reach_aggregate_bydate_lastyear
+#  join: mehmet {
+#    from: reach_aggregate_bydate_lastyear
+#    sql_on: ${ahmet.date_date}=${mehmet.date_date} ;;
+#    relationship: many_to_one
+#  }
+#}
+
+#explore: reach_aggregate_bydate_lastyear {
+#  join: reach_aggregate_bydate_lastyear {
+#    type: inner
+#    sql_on: ${ahmet.date_date}=${mehmet.date_date} ;;
+#    relationship: many_to_one
+#  }
+#}
+
 explore: reach_aggregate_bydate_lastyear {}
 
 explore: top_countries2 {}
@@ -44,8 +62,9 @@ explore: reach_aggregate_bydate_lastp {
     #sql_on: date_add(${reach_aggregate_bydate_yearago.date_date},INTERVAL 1 YEAR) = ${reach_aggregate_bydate_lastp.date_date} ;;
     relationship: many_to_one
   }
-
 }
+
+explore: reach_aggregate_lastyear {}
 
 explore: reach_aggregate_byalias_lastpx {}
 

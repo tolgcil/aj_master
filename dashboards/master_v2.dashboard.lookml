@@ -1,14 +1,14 @@
-- dashboard: master_digital_reach
+- dashboard: master_v2
   title: Master Digital Reach
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
   refresh: 1 hour
-  preferred_slug: stzXhO1V7HBceFtELPRCax
+  preferred_slug: iga1l5Eno7bALlYHccjxWQ
   elements:
   - title: Total Reach History
     name: Total Reach History
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_byperiod_history
     type: looker_line
     fields: [reach_aggregate_byperiod_history.total_views, reach_aggregate_byperiod_history.facebook_views,
@@ -87,11 +87,10 @@
     height: 9
   - title: Reach Contribution by Property
     name: Reach Contribution by Property
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_byalias_change
     type: looker_pie
     fields: [reach_aggregate_byalias_change.alias, reach_aggregate_byalias_change.total_views]
-    filters: {}
     sorts: [reach_aggregate_byalias_change.total_views desc 0]
     total: true
     value_labels: legend
@@ -146,11 +145,10 @@
     height: 8
   - title: Properties
     name: Properties
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_byalias_change
     type: looker_grid
     fields: [reach_aggregate_byalias_change.alias, reach_aggregate_byalias_change.total_views]
-    filters: {}
     sorts: [reach_aggregate_byalias_change.total_views desc]
     limit: 500
     dynamic_fields: [{category: table_calculation, label: "% of Total Reach", value_format: !!null '',
@@ -223,20 +221,19 @@
     refresh: 1 day
     listen:
       Property: reach_aggregate_byalias_change.alias
-    row: 16
+    row: 24
     col: 13
     width: 11
     height: 8
   - title: Reach Details by Property
     name: Reach Details by Property
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_byalias_change
     type: looker_grid
     fields: [reach_aggregate_byalias_change.alias, reach_aggregate_byalias_change.total_views,
       reach_aggregate_byalias_change.pop_change, reach_aggregate_byalias_change.yoy_change,
       reach_aggregate_byalias_change.yt_percent, reach_aggregate_byalias_change.fb_percent,
       reach_aggregate_byalias_change.pv_percent]
-    filters: {}
     sorts: [reach_aggregate_byalias_change.total_views desc]
     limit: 500
     dynamic_fields: [{category: table_calculation, label: Percent of Reach Aggregate
@@ -334,13 +331,13 @@
     refresh: 1 day
     listen:
       Property: reach_aggregate_byalias_change.alias
-    row: 40
+    row: 48
     col: 0
     width: 24
-    height: 10
+    height: 9
   - title: Total Reach Over Last 90 Days
     name: Total Reach Over Last 90 Days
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_bydate_lastp
     type: single_value
     fields: [reach_aggregate_bydate_lastp.total_views]
@@ -414,7 +411,7 @@
     height: 4
   - title: from last year
     name: from last year
-    model: aj_data_models_poc
+    model: aj_master
     explore: total_views_yoy_change
     type: single_value
     fields: [total_views_yoy_change.period, total_views_yoy_change.total_views]
@@ -488,7 +485,7 @@
     height: 4
   - title: from 90 days ago
     name: from 90 days ago
-    model: aj_data_models_poc
+    model: aj_master
     explore: total_views_90_days_change
     type: single_value
     fields: [total_views_90_days_change.period, total_views_90_days_change.total_views]
@@ -576,7 +573,7 @@
     height: 4
   - title: Channel Reach Details Tile
     name: Channel Reach Details Tile
-    model: aj_data_models_poc
+    model: aj_master
     explore: for_channel_reach
     type: looker_grid
     fields: [for_channel_reach.metrics, for_channel_reach.all_values]
@@ -643,7 +640,7 @@
     height: 3
   - title: Reach Details Tile
     name: Reach Details Tile
-    model: aj_data_models_poc
+    model: aj_master
     explore: for_website_reach
     type: looker_grid
     fields: [for_website_reach.metrics, for_website_reach.all_values]
@@ -725,7 +722,7 @@
     height: 4
   - title: Devices (excluding Facebook)
     name: Devices (excluding Facebook)
-    model: aj_data_models_poc
+    model: aj_master
     explore: device_aggregate
     type: looker_pie
     fields: [device_aggregate.device_category, device_aggregate.total_views]
@@ -774,13 +771,13 @@
     series_types: {}
     listen:
       Device Category: device_aggregate.device_category
-    row: 24
+    row: 32
     col: 0
     width: 13
     height: 8
   - title: Devices(excluding Facebook)
     name: Devices(excluding Facebook)
-    model: aj_data_models_poc
+    model: aj_master
     explore: device_aggregate
     type: looker_grid
     fields: [device_aggregate.device_category, device_aggregate.total_views]
@@ -847,13 +844,13 @@
     series_types: {}
     listen:
       Device Category: device_aggregate.device_category
-    row: 24
+    row: 32
     col: 13
     width: 11
     height: 8
   - title: Top Countries(excluding Facebook)
     name: Top Countries(excluding Facebook)
-    model: aj_data_models_poc
+    model: aj_master
     explore: top_countries
     type: looker_grid
     fields: [top_countries.country, top_countries.total_percent_total]
@@ -914,13 +911,13 @@
     defaults_version: 1
     listen:
       Country: top_countries.country
-    row: 32
+    row: 40
     col: 13
     width: 11
     height: 8
   - title: Reach by Property (last 90 days)
     name: Reach by Property (last 90 days)
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_byalias_lastp
     type: looker_column
     fields: [reach_aggregate_byalias_lastp.alias, reach_aggregate_byalias_lastp.yt_views,
@@ -971,13 +968,13 @@
     defaults_version: 1
     listen:
       Property: reach_aggregate_byalias_lastp.alias
-    row: 69
+    row: 82
     col: 0
     width: 12
     height: 7
   - title: Reach by Channel (Same Period Last Year)
     name: Reach by Channel (Same Period Last Year)
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_bydate_yearago
     type: looker_line
     fields: [reach_aggregate_bydate_yearago.date_date, reach_aggregate_bydate_yearago.yt_views,
@@ -1028,13 +1025,13 @@
       reach_aggregate_bydate_yearago.pageviews: Page Views
     defaults_version: 1
     listen: {}
-    row: 62
+    row: 75
     col: 12
     width: 12
     height: 7
   - title: Reach By Channel with Last Year (Last 90 Days)
     name: Reach By Channel with Last Year (Last 90 Days)
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_bydate_lastp
     type: looker_line
     fields: [reach_aggregate_bydate_lastp.date_date, reach_aggregate_bydate_lastp.fb_views,
@@ -1113,13 +1110,13 @@
     hidden_fields:
     hidden_series: []
     listen: {}
-    row: 50
+    row: 63
     col: 0
     width: 24
     height: 6
   - title: Reach by Channel (Previous 90 Days)
     name: Reach by Channel (Previous 90 Days)
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_bydate_lastpx
     type: looker_line
     fields: [reach_aggregate_bydate_lastpx.date_date, reach_aggregate_bydate_lastpx.yt_views,
@@ -1183,13 +1180,13 @@
       reach_aggregate_bydate_lastpx.fb_views: Facebook
     defaults_version: 1
     listen: {}
-    row: 56
+    row: 69
     col: 0
     width: 24
     height: 6
   - title: Facebook Reach by Property (last 180 days)
     name: Facebook Reach by Property (last 180 days)
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_lastpx
     type: looker_line
     fields: [reach_aggregate_lastpx.alias, reach_aggregate_lastpx.date_date, reach_aggregate_lastpx.fb_views]
@@ -1267,13 +1264,13 @@
     defaults_version: 1
     listen:
       Property: reach_aggregate_lastpx.alias
-    row: 82
+    row: 95
     col: 0
     width: 24
     height: 7
   - title: Page Reach by Property (last 180 days)
     name: Page Reach by Property (last 180 days)
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_lastpx
     type: looker_line
     fields: [reach_aggregate_lastpx.alias, reach_aggregate_lastpx.date_date, reach_aggregate_lastpx.pageviews]
@@ -1360,13 +1357,13 @@
     defaults_version: 1
     listen:
       Property: reach_aggregate_lastpx.alias
-    row: 96
+    row: 109
     col: 0
     width: 24
     height: 6
   - title: Total Reach by Property (last 180 days)
     name: Total Reach by Property (last 180 days)
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_lastpx
     type: looker_line
     fields: [reach_aggregate_lastpx.alias, reach_aggregate_lastpx.date_date, reach_aggregate_lastpx.total_views]
@@ -1444,13 +1441,13 @@
     defaults_version: 1
     listen:
       Property: reach_aggregate_lastpx.alias
-    row: 76
+    row: 89
     col: 0
     width: 24
     height: 6
   - title: YouTube Reach by Property (last 180 days)
     name: YouTube Reach by Property (last 180 days)
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_lastpx
     type: looker_line
     fields: [reach_aggregate_lastpx.alias, reach_aggregate_lastpx.date_date, reach_aggregate_lastpx.yt_views]
@@ -1542,13 +1539,13 @@
     defaults_version: 1
     listen:
       Property: reach_aggregate_lastpx.alias
-    row: 89
+    row: 102
     col: 0
     width: 24
     height: 7
   - title: Countries (excluding Facebook)
     name: Countries (excluding Facebook)
-    model: aj_data_models_poc
+    model: aj_master
     explore: country_aggregate
     type: looker_google_map
     fields: [country_aggregate.country, country_aggregate.total_views]
@@ -1583,13 +1580,13 @@
     defaults_version: 0
     listen:
       Country: country_aggregate.country
-    row: 32
+    row: 40
     col: 0
     width: 13
     height: 8
   - title: 90 Day Total Reach Over Last 90 Days
     name: 90 Day Total Reach Over Last 90 Days
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_byperiod_history
     type: looker_area
     fields: [reach_aggregate_byperiod_history.total_views, reach_aggregate_byperiod_history.date_date]
@@ -1641,13 +1638,13 @@
       reach_aggregate_byperiod_history.total_views: "#8ef9db"
     defaults_version: 1
     listen: {}
-    row: 62
+    row: 75
     col: 0
     width: 12
     height: 7
   - title: Reach by Channel (last t days)
     name: Reach by Channel (last t days)
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_bydate_lastyear
     type: looker_line
     fields: [reach_aggregate_bydate_lastyear.date_date, reach_aggregate_bydate_lastyear.yt_views,
@@ -1696,10 +1693,294 @@
     defaults_version: 1
     listen:
       Date: reach_aggregate_bydate_lastyear.date_date
-    row: 69
+    row: 82
     col: 12
     width: 12
     height: 7
+  - title: Reach Contribution by Property_v2
+    name: Reach Contribution by Property_v2
+    model: aj_master
+    explore: reach_aggregate_lastyear
+    type: looker_pie
+    fields: [reach_aggregate_lastyear.alias, reach_aggregate_lastyear.total_views_]
+    sorts: [reach_aggregate_lastyear.total_views_ desc 0]
+    limit: 500
+    value_labels: legend
+    label_type: labPer
+    color_application:
+      collection_id: b43731d5-dc87-4a8e-b807-635bef3948e7
+      palette_id: fb7bb53e-b77b-4ab6-8274-9d420d3d73f3
+      options:
+        steps: 5
+    series_colors: {}
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 1
+    series_types: {}
+    listen:
+      Date: reach_aggregate_lastyear.date_date
+    row: 16
+    col: 13
+    width: 11
+    height: 8
+  - title: Properties_v2
+    name: Properties_v2
+    model: aj_master
+    explore: reach_aggregate_lastyear
+    type: looker_grid
+    fields: [reach_aggregate_lastyear.alias, reach_aggregate_lastyear.total_views_]
+    sorts: [reach_aggregate_lastyear.total_views_ desc 0]
+    limit: 500
+    dynamic_fields: [{category: table_calculation, label: "% of Total Reach", value_format: !!null '',
+        value_format_name: percent_2, calculation_type: percent_of_column_sum, table_calculation: of_total_reach,
+        args: [reach_aggregate_lastyear.total_views_], _kind_hint: measure, _type_hint: number,
+        id: CjIMji7xYR}]
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '14'
+    rows_font_size: '13'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    column_order: [of_total_reach, reach_aggregate_lastyear.alias]
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    series_labels:
+      reach_aggregate_lastyear.alias: Property
+    series_value_format:
+      of_total_reach:
+        name: percent_2
+        decimals: '2'
+        format_string: "#,##0.00%"
+        label: Percent (2)
+        label_prefix: Percent
+    hidden_fields: [reach_aggregate_lastyear.total_views_]
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 1
+    series_types: {}
+    listen:
+      Date: reach_aggregate_lastyear.date_date
+    row: 24
+    col: 0
+    width: 13
+    height: 8
+  - title: Reach Details by Property v2
+    name: Reach Details by Property v2
+    model: aj_master
+    explore: reach_aggregate_lastyear
+    type: looker_grid
+    fields: [reach_aggregate_lastyear.alias, reach_aggregate_lastyear.total_reach,
+      reach_aggregate_lastyear.fb_percent, reach_aggregate_lastyear.yt_percent, reach_aggregate_lastyear.pv_percent]
+    sorts: [reach_aggregate_lastyear.total_reach desc 0]
+    limit: 500
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '14'
+    rows_font_size: '13'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    series_labels:
+      reach_aggregate_lastyear.alias: Property
+      reach_aggregate_lastyear.total_reach: "% Total Reach"
+      reach_aggregate_lastyear.fb_percent: "% from Facebook"
+      reach_aggregate_lastyear.yt_percent: "% from Youtube"
+      reach_aggregate_lastyear.pv_percent: "% from Pageviews"
+    series_cell_visualizations:
+      reach_aggregate_lastyear.total_reach:
+        is_active: false
+    series_value_format:
+      reach_aggregate_lastyear.total_reach: 0.00"%"
+      reach_aggregate_lastyear.fb_percent:
+        name: percent_2
+        decimals: '2'
+        format_string: "#,##0.00%"
+        label: Percent (2)
+        label_prefix: Percent
+      reach_aggregate_lastyear.yt_percent:
+        name: percent_2
+        decimals: '2'
+        format_string: "#,##0.00%"
+        label: Percent (2)
+        label_prefix: Percent
+      reach_aggregate_lastyear.pv_percent:
+        name: percent_2
+        decimals: '2'
+        format_string: "#,##0.00%"
+        label: Percent (2)
+        label_prefix: Percent
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 1
+    series_types: {}
+    listen: {}
+    row: 57
+    col: 0
+    width: 16
+    height: 6
+  - title: Reach Details by Property Tile v2
+    name: Reach Details by Property Tile v2
+    model: aj_master
+    explore: reach_aggregate_byalias_change
+    type: looker_grid
+    fields: [reach_aggregate_byalias_change.alias, reach_aggregate_byalias_change.pop_change,
+      reach_aggregate_byalias_change.yoy_change]
+    sorts: [reach_aggregate_byalias_change.pop_change desc 0]
+    limit: 500
+    show_view_names: false
+    show_row_numbers: false
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '14'
+    rows_font_size: '13'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    series_labels:
+      reach_aggregate_byalias_change.alias: Property
+      reach_aggregate_byalias_change.pop_change: "% 90 Day Change"
+      reach_aggregate_byalias_change.yoy_change: "% Yearly Change"
+    series_cell_visualizations:
+      reach_aggregate_byalias_change.pop_change:
+        is_active: false
+    series_value_format:
+      reach_aggregate_byalias_change.yoy_change: 0.00"%"
+      reach_aggregate_byalias_change.pop_change: 0.00"%"
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    defaults_version: 1
+    series_types: {}
+    row: 57
+    col: 16
+    width: 8
+    height: 6
   filters:
   - name: Property
     title: Property
@@ -1710,7 +1991,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_lastp
     listens_to_filters: []
     field: reach_aggregate_lastp.alias
@@ -1724,7 +2005,7 @@
       type: relative_timeframes
       display: inline
       options: []
-    model: aj_data_models_poc
+    model: aj_master
     explore: reach_aggregate_lastp
     listens_to_filters: []
     field: reach_aggregate_lastp.date_date
@@ -1737,7 +2018,7 @@
     ui_config:
       type: tag_list
       display: popover
-    model: aj_data_models_poc
+    model: aj_master
     explore: country_aggregate
     listens_to_filters: []
     field: country_aggregate.country
@@ -1750,7 +2031,7 @@
     ui_config:
       type: button_group
       display: inline
-    model: aj_data_models_poc
+    model: aj_master
     explore: device_aggregate
     listens_to_filters: []
     field: device_aggregate.device_category
