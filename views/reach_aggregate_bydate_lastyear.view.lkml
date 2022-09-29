@@ -9,7 +9,6 @@ view: reach_aggregate_bydate_lastyear {
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
-
   dimension_group: date {
     type: time
     timeframes: [
@@ -22,17 +21,29 @@ view: reach_aggregate_bydate_lastyear {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.date ;;
+     sql: ${TABLE}.date;;
   }
 
+filter: date_filter {
+  type: date
+}
+
+measure: fb_views_selected {
+  type: sum
+  sql: case when {% condition date_filter %} ${date_raw} {% endcondition %} then ${TABLE}.fb_views end;;
+}
+
+measure: fb_views_last_year {
+  type: sum
+  sql: case when {% condition date_filter %}  date_add(date(${date_raw}), interval 1 year) {% endcondition %} then ${TABLE}.fb_views end ;;
+
+  #date_diff(extract(year from ${date_date})
+  #date_add(year,-1,${date_date})
+}
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Fb Views" in Explore.
 
-  measure: fb_views {
-    type: sum
-    sql: ${TABLE}.fb_views ;;
-  }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
@@ -40,11 +51,6 @@ view: reach_aggregate_bydate_lastyear {
 
   measure: total_fb_views {
     type: sum
-    sql: ${TABLE}.fb_views ;;
-  }
-
-  measure: average_fb_views {
-    type: average
     sql: ${TABLE}.fb_views ;;
   }
 

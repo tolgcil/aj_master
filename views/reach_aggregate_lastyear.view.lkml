@@ -97,4 +97,29 @@ view: reach_aggregate_lastyear {
     type: percent_of_total
     sql: ${total_views_} ;;
   }
+
+  parameter: linechart_parameter {
+    type: unquoted
+    description: "To be used with the Line Chart Value field"
+    allowed_value: {label: "Facebook Reach" value: "FR"}
+    allowed_value: {label: "Pageview Reach" value: "PR"}
+    allowed_value: {label: "Youtube Reach" value: "YR"}
+    allowed_value: {label: "Total Reach" value: "TR"}
+  }
+
+  measure: linechart_value {
+    type: number
+    description: "To be used with the Line Chart Parameter field"
+    sql: {%if linechart_parameter._parameter_value == "FR" %}
+        ${total_fb_views}
+       {%elsif linechart_parameter._parameter_value == "PR" %}
+        ${total_pageviews}
+       {%elsif linechart_parameter._parameter_value == "YR" %}
+        ${total_yt_views}
+       {% else %}
+        ${total_views_}
+       {% endif %};;
+  }
+
+
 }
