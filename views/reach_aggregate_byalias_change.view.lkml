@@ -2,7 +2,7 @@
 view: reach_aggregate_byalias_change {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_byalias_change`
+  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_byalias_change_v2`
     ;;
   dimension: alias {
     type: string

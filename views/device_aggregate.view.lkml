@@ -2,7 +2,7 @@
 view: device_aggregate {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.device_aggregate`
+  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.device_aggregate_v2`
     ;;
   dimension: aja_pv {
     type: number
