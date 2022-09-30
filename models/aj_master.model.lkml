@@ -26,6 +26,10 @@ explore: youtube_device {
 #    relationship: many_to_one
 #  }
 #}
+explore: reach_aggregate_lastyear_unpivot_v2 {
+  label: "Unpivot Chart"
+}
+
 explore: for_last_years{}
 
 explore: reach_aggregate_bydate_lastyear {}
