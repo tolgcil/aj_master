@@ -28,18 +28,6 @@ filter: date_filter {
   type: date
 }
 
-measure: fb_views_selected {
-  type: sum
-  sql: case when {% condition date_filter %} ${date_raw} {% endcondition %} then ${TABLE}.fb_views end;;
-}
-
-measure: fb_views_last_year {
-  type: sum
-  sql: case when {% condition date_filter %}  date_add(date(${date_raw}), interval 1 year) {% endcondition %} then ${TABLE}.fb_views end ;;
-
-  #date_diff(extract(year from ${date_date})
-  #date_add(year,-1,${date_date})
-}
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Fb Views" in Explore.
