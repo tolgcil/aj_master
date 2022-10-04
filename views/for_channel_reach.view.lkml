@@ -5,7 +5,7 @@ view: for_channel_reach {
 "Channel Video Reach" AS metrics,
 cast(format("%'d",(SUM(fb_views)+sum(yt_views))) as string) AS all_values
 FROM
-`ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp`
+`ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp_v2`
 UNION ALL
 SELECT
 "from 90 days ago" AS metrics,
@@ -21,13 +21,13 @@ SELECT
 "value" AS meausures,
 (SUM(yt_views)+sum(fb_views)) AS pageviews1
 FROM
-`ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp`) p
+`ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp_v2`) p
 LEFT JOIN (
 SELECT
 "value" AS meausures,
 (SUM(fb_views)+sum(yt_views)) AS pageviews2
 FROM
-`ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastpx`) q
+`ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastpx_v2`) q
 ON
 p.meausures=q.meausures) t
 UNION ALL
@@ -45,13 +45,13 @@ SELECT
 "value" AS meausures,
 (SUM(fb_views)+sum(yt_views)) AS pageviews1
 FROM
-`ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp`) k
+`ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp_v2`) k
 LEFT JOIN (
 SELECT
 "value" AS meausures,
 (SUM(fb_views)+sum(yt_views)) AS pageviews2
 FROM
-`ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_yearago`) l
+`ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_yearago_v2`) l
 ON
 k.meausures=l.meausures) m
         ;;

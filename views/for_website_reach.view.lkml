@@ -5,7 +5,7 @@ view: for_website_reach {
     "Website Reach" AS metrics,
     cast(format("%'d",SUM(pageviews)) as string) AS all_values
     FROM
-    `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp`
+    `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp_v2`
     UNION ALL
     SELECT
     "from 90 days ago" AS metrics,
@@ -21,13 +21,13 @@ view: for_website_reach {
     "value" AS meausures,
     SUM(pageviews) AS pageviews1
     FROM
-    `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp`) p
+    `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp_v2`) p
     LEFT JOIN (
     SELECT
     "value" AS meausures,
     SUM(pageviews) AS pageviews2
     FROM
-    `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastpx`) q
+    `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastpx_v2`) q
     ON
     p.meausures=q.meausures) t
     UNION ALL
@@ -45,13 +45,13 @@ view: for_website_reach {
     "value" AS meausures,
     SUM(pageviews) AS pageviews1
     FROM
-    `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp`) k
+    `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp_v2`) k
     LEFT JOIN (
     SELECT
     "value" AS meausures,
     SUM(pageviews) AS pageviews2
     FROM
-    `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_yearago`) l
+    `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_yearago_v2`) l
     ON
     k.meausures=l.meausures) m
         ;;
