@@ -2,9 +2,9 @@ view: total_views_yoy_change {
   derived_table: {
 
     sql:
-    select "this_year_total" as period, avg(total_views) as total_views from `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp`
+    select "this_year_total" as period, avg(total_views) as total_views from `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp_v2`
     union all
-    select "last_year_total" as period,avg(total_views) as total_views from `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_yearago`
+    select "last_year_total" as period,avg(total_views) as total_views from `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_yearago_v2`
     ;;
   }
 

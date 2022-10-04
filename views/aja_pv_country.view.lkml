@@ -2,7 +2,7 @@
 view: aja_pv_country {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.aja_pv_country`
+  sql_table_name: `ajmn-rs-bq.al_jazeera_data_models_poc.aja_pv_country_v2`
     ;;
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.

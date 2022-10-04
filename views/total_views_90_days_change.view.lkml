@@ -2,9 +2,9 @@ view: total_views_90_days_change {
   derived_table: {
 
     sql:
-    select "90_days_total" as period, avg(total_views) as total_views from `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp`
+    select "90_days_total" as period, avg(total_views) as total_views from `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastp_v2`
       union all
-    select "previous_90_days_total" as period,avg(total_views) as total_views from `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastpx`
+    select "previous_90_days_total" as period,avg(total_views) as total_views from `ajmn-rs-bq.al_jazeera_data_models_poc.reach_aggregate_bydate_lastpx_v2`
     ;;
   }
 
